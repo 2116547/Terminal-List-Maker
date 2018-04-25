@@ -1,0 +1,7 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Project1" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="com.company.Main" />
+    <module name="Project1" />
+    <method />
+  </configuration>
+</component>
