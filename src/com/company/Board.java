@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Board{
     String lineBottom = "╚══════════════════════════════════╝";
     ArrayList<BoardLine> lines = new ArrayList<>();
+    BoardLine listTitle = new BoardLine("List");
 
     public void newLine(String content){
         BoardLine line = new BoardLine();
@@ -15,13 +16,7 @@ public class Board{
 
     public void fillLine(BoardLine line, String content){
         // Board is 36 chars wide, max content width is 34
-        int length = content.length();
-
-        if (length <= 34){
-            line.setContent(content);
-        } else {
-            System.err.println("Error: content to big. Length: " + length);
-        }
+        line.setContent(content);
     }
 
     public void removeLine(String s){
@@ -49,17 +44,23 @@ public class Board{
         }
     }
 
+    public int getLinesCount(){
+        return lines.size();
+    }
+
     public void drawBoard(){
         System.out.print("\033[H\033[2J");
         System.out.flush();
         System.out.println("╔══════════════════════════════════╗");
-        BoardLine l1 = new BoardLine("Olé Olé Olé");
-        System.out.println(l1.getContent());
-        BoardLine l2 = new BoardLine("Dikke tieten kartofelsalat");
-        System.out.println(l2.getContent());
+        System.out.println(listTitle.getContent());
         System.out.println("╠══════════════════════════════════╣");
         printLines(lines);
         System.out.println(lineBottom);
+    }
+
+    public void setBoardTitle(String title){
+        listTitle.setContent(title);
+        drawBoard();
     }
 
     public void clearBoard(){

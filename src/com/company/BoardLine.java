@@ -23,8 +23,12 @@ public class BoardLine {
     }
 
     public void setContent(String content) {
-        this.content = TransformContent(content);
-        this.text = content;
+        if (content.length() <= 34){
+            this.content = TransformContent(content);
+            this.text = content;
+        } else {
+            System.err.println("Error: content to big. Length: " + content.length());
+        }
     }
 
     public String TransformContent(String c){
