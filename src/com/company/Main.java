@@ -27,6 +27,8 @@ public class Main {
                     command.getSize();
                 } else if (context.contains("/settitle")) {
                     command.changeTitle(context);
+                } else if (context.equals("/quit")){
+                    break;
                 }
 
 

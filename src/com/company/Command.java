@@ -38,5 +38,6 @@ class Command {
         System.out.println("/remove [list item] - removes specified list item");
         System.out.println("/settitle [title] - replaces the title of the list");
         System.out.println("/size - gives the size of the current list");
+        System.out.println("/quit - quits the program");
     }
 }
