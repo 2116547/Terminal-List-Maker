@@ -2,24 +2,24 @@ package com.company;
 
 import java.util.ArrayList;
 
-public class Board{
+class Board {
     String lineBottom = "╚══════════════════════════════════╝";
-    ArrayList<BoardLine> lines = new ArrayList<>();
-    BoardLine listTitle = new BoardLine("List");
+    private ArrayList<BoardLine> lines = new ArrayList<>();
+    private BoardLine listTitle = new BoardLine("List");
 
-    public void newLine(String content){
+    void newLine(String content){
         BoardLine line = new BoardLine();
         fillLine(line, content);
         lines.add(line);
         drawBoard();
     }
 
-    public void fillLine(BoardLine line, String content){
+    private void fillLine(BoardLine line, String content){
         // Board is 36 chars wide, max content width is 34
         line.setContent(content);
     }
 
-    public void removeLine(String s){
+    void removeLine(String s){
         boolean found = false;
         for (BoardLine l : lines){
             if(l.getText().equals(s)){
@@ -34,21 +34,21 @@ public class Board{
         found = false;
     }
 
-    public void printLine(BoardLine line){
+    private void printLine(BoardLine line){
         System.out.println(line.getContent());
     }
 
-    public void printLines(ArrayList<BoardLine> list){
+    private void printLines(ArrayList<BoardLine> list){
         for (BoardLine l : list){
             printLine(l);
         }
     }
 
-    public int getLinesCount(){
+    int getLinesCount(){
         return lines.size();
     }
 
-    public void drawBoard(){
+    void drawBoard(){
         System.out.print("\033[H\033[2J");
         System.out.flush();
         System.out.println("╔══════════════════════════════════╗");
@@ -58,12 +58,12 @@ public class Board{
         System.out.println(lineBottom);
     }
 
-    public void setBoardTitle(String title){
+    void setBoardTitle(String title){
         listTitle.setContent(title);
         drawBoard();
     }
 
-    public void clearBoard(){
+    void clearBoard(){
         int i = 0;
         while (lines.size() > i){
             lines.remove(0);

@@ -1,28 +1,27 @@
 package com.company;
 
-public class BoardLine {
+class BoardLine {
 
-    int size = 36;
-    String content = "";
-    String text = "";
+    private String content = "";
+    private String text = "";
 
-    public BoardLine (String content){
+    BoardLine(String content){
         setContent(content);
     }
 
-    public BoardLine (){
+    BoardLine(){
 
     }
 
-    public String getContent() {
+    String getContent() {
         return content;
     }
 
-    public String getText() {
+    String getText() {
         return text;
     }
 
-    public void setContent(String content) {
+    void setContent(String content) {
         if (content.length() <= 34){
             this.content = TransformContent(content);
             this.text = content;
@@ -31,7 +30,7 @@ public class BoardLine {
         }
     }
 
-    public String TransformContent(String c){
+    private String TransformContent(String c){
         String transformed = "";
         String cont = "";
         int length = c.length();

@@ -8,6 +8,7 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
         Board bord = new Board();
+        Command command = new Command(bord);
         bord.drawBoard();
 
         // Runs the program until the user enters an empty command
@@ -17,28 +18,17 @@ public class Main {
                 break;
             } else if (context.charAt(0) == '/'){
                 if (context.equals("/clear")){
-                    bord.clearBoard();
+                    command.clearBoard();
                 } else if (context.equals("/help")){
-                    System.out.println("/clear - clears the list");
-                    System.out.println("/remove [list item] - removes specified list item");
-                    System.out.println("/settitle [title] - Replaces the title of the list");
+                    command.printCommands();
                 } else if (context.contains("/remove")){
-                        if (context.length() == 7){
-                        System.out.println("Please specify the line you want to remove");
-                    } else {
-                        String search = context.substring(8);
-                        bord.removeLine(search);
-                    }
+                    command.removeItem(context);
                 } else if (context.equals("/size")){
-                    System.out.println("List size: " + bord.getLinesCount());
-                } else if (context.contains("/settitle")){
-                    if (context.length() == 8){
-                        System.out.println("Please specify a new title for the list");
-                    } else {
-                        String title = context.substring(10);
-                        bord.setBoardTitle(title);
-                    }
+                    command.getSize();
+                } else if (context.contains("/settitle")) {
+                    command.changeTitle(context);
                 }
+
 
                 else {
                     System.out.println("Command not found, tye /help for the list of commands");
